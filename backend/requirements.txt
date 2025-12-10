@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+requests
+trafilatura
+python-dotenv
+qdrant-client
+cohere
+pydantic
