@@ -18,7 +18,7 @@ def create_app() -> FastAPI:
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[
-            "https://physical-ai-humanoid-robotics-textb-six.vercel.app",  # Production Vercel URL
+            "https://my-website-two-weld-92.vercel.app/",  # Production Vercel URL
             "http://localhost:3000",  # Local development
             "http://localhost:3001",  # Alternative local development
             "http://localhost:8080"   # Alternative local development
@@ -57,3 +57,4 @@ if __name__ == "__main__":
         port=8000,
         reload=True  # Only in development
     )
+
