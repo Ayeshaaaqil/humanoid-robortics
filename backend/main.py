@@ -1,168 +1,59 @@
-import requests
-import xml.etree.ElementTree as ET
-import trafilatura
-from qdrant_client import QdrantClient
-from qdrant_client.models import VectorParams, Distance, PointStruct
-import cohere
-
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-# -------------------------------------
-# CONFIG
-# -------------------------------------
-# Your Deployment Link:
-SITEMAP_URL = os.getenv("SITEMAP_URL")
-COLLECTION_NAME = "humanoid_ai_book"
-
-cohere_client = cohere.Client(os.getenv("COHERE_API_KEY"))
-EMBED_MODEL = "embed-english-v3.0"
-
-# Connect to Qdrant Cloud
-qdrant = QdrantClient(
-    url=os.getenv("QDRANT_URL"), 
-    api_key=os.getenv("QDRANT_API_KEY"),
-
-)
-
-# -------------------------------------
-# Step 1 — Extract URLs from sitemap
-# -------------------------------------
-def get_all_urls(sitemap_url):
-    try:
-        xml = requests.get(sitemap_url).text
-    except requests.exceptions.RequestException as e:
-        print(f"[ERROR] Failed to retrieve sitemap from {sitemap_url}: {e}")
-        return []
-    root = ET.fromstring(xml)
-
-    urls = []
-    for child in root:
-        loc_tag = child.find("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
-        if loc_tag is not None:
-            urls.append(loc_tag.text)
-
-    print("\nFOUND URLS:")
-    for u in urls:
-        print(" -", u)
-
-    return urls
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from src.api.routes import ingest, chat, history
+from src.config.settings import settings
 
 
-# -------------------------------------
-# Step 2 — Download page + extract text
-# -------------------------------------
-def extract_text_from_url(url):
-    try:
-        html = requests.get(url).text
-    except requests.exceptions.RequestException as e:
-        print(f"[ERROR] Failed to download page from {url}: {e}")
-        return None
-    text = trafilatura.extract(html)
-
-    if not text:
-        print("[WARNING] No text extracted from:", url)
-
-    return text
-
-
-# -------------------------------------
-# Step 3 — Chunk the text
-# -------------------------------------
-def chunk_text(text, max_chars=1200):
-    chunks = []
-    while len(text) > max_chars:
-        split_pos = text[:max_chars].rfind(". ")
-        if split_pos == -1:
-            split_pos = max_chars
-        chunks.append(text[:split_pos])
-        text = text[split_pos:]
-    chunks.append(text)
-    return chunks
-
-
-# -------------------------------------
-# Step 4 — Create embedding
-# -------------------------------------
-def embed(text):
-    response = cohere_client.embed(
-        model=EMBED_MODEL,
-        input_type="search_query",  # Use search_query for queries
-        texts=[text],
+def create_app() -> FastAPI:
+    """
+    Create and configure the FastAPI application.
+    """
+    app = FastAPI(
+        title=settings.APP_NAME,
+        version=settings.VERSION,
+        description="RAG Chatbot API for Physical AI & Humanoid Robotics Book"
     )
-    return response.embeddings[0]  # Return the first embedding
+
+    # Add CORS middleware - only allow Vercel domain
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[
+            "https://physical-ai-humanoid-robotics-textb-six.vercel.app",  # Production Vercel URL
+            "http://localhost:3000",  # Local development
+            "http://localhost:3001",  # Alternative local development
+            "http://localhost:8080"   # Alternative local development
+        ],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # Include API routes
+    app.include_router(ingest.router, prefix=settings.API_V1_STR)
+    app.include_router(chat.router, prefix=settings.API_V1_STR)
+    app.include_router(history.router, prefix=settings.API_V1_STR)
+
+    @app.get("/")
+    def read_root():
+        return {
+            "message": "RAG Chatbot API",
+            "version": settings.VERSION,
+            "status": "running"
+        }
+
+    return app
 
 
-# -------------------------------------
-# Step 5 — Store in Qdrant
-# -------------------------------------
-def create_collection():
-    print("\nCreating Qdrant collection...")
-    try:
-        qdrant.recreate_collection(
-            collection_name=COLLECTION_NAME,
-            vectors_config=VectorParams(
-            size=1024,        # Cohere embed-english-v3.0 dimension
-            distance=Distance.COSINE
-            )
-        )
-    except Exception as e:
-        print(f"[ERROR] Failed to create Qdrant collection: {e}")
-
-def save_chunk_to_qdrant(chunk, chunk_id, url):
-    vector = embed(chunk)
-    if vector is None:
-        print(f"[WARNING] Skipping chunk {chunk_id} due to embedding failure.")
-        return
-
-    try:
-        qdrant.upsert(
-            collection_name=COLLECTION_NAME,
-            points=[
-                PointStruct(
-                    id=chunk_id,
-                    vector=vector,
-                    payload={
-                        "url": url,
-                        "text": chunk,
-                        "chunk_id": chunk_id
-                    }
-                )
-            ]
-        )
-    except Exception as e:
-        print(f"[ERROR] Failed to upsert chunk {chunk_id} to Qdrant: {e}")
+# Create the application instance
+app = create_app()
 
 
-# -------------------------------------
-# MAIN INGESTION PIPELINE
-# -------------------------------------
-def ingest_book():
-    urls = get_all_urls(SITEMAP_URL)
-
-    create_collection()
-
-    global_id = 1
-
-    for url in urls:
-        print("\nProcessing:", url)
-        text = extract_text_from_url(url)
-
-        if not text:
-            continue
-
-        chunks = chunk_text(text)
-
-        for ch in chunks:
-            save_chunk_to_qdrant(ch, global_id, url)
-            print(f"Saved chunk {global_id}")
-            global_id += 1
-
-    print("\n✔️ Ingestion completed!")
-    print("Total chunks stored:", global_id - 1)
-
-
+# For running with uvicorn directly
 if __name__ == "__main__":
-    ingest_book()
+    import uvicorn
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True  # Only in development
+    )
