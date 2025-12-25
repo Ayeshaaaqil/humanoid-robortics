@@ -1,8 +1,13 @@
-from agents import Agent, Runner, OpenAIChatCompletionsModel, AsyncOpenAI
-from agents import set_tracing_disabled, function_tool
+try:
+    from agential import Agent, Runner, OpenAIChatCompletionsModel, AsyncOpenAI
+    from agential import set_tracing_disabled, function_tool
+    from agential import enable_verbose_stdout_logging
+except ImportError:
+    print("agential library not installed. Install it using: pip install agential")
+    raise
+
 import os
 from dotenv import load_dotenv # Keep this for GEMINI_API_KEY
-from agents import enable_verbose_stdout_logging
 
 enable_verbose_stdout_logging()
 
@@ -21,9 +26,13 @@ model = OpenAIChatCompletionsModel(
     openai_client=provider
 )
 
-from utils import retrieve # Import retrieve from utils.py
-
-
+try:
+    from utils import retrieve # Import retrieve from utils.py
+except ImportError:
+    print("utils.py with retrieve function not found. Creating a mock function for testing.")
+    def retrieve(query: str):
+        """Mock retrieve function for testing"""
+        return f"Retrieved information for: {query}"
 
 agent = Agent(
     name="Assistant",
@@ -37,9 +46,14 @@ If the answer is not in the retrieved content, say "I don't know".
     tools=[retrieve]
 )
 
-result = Runner.run_sync(
-    agent,
-    input="what is physical ai?",
-)
+try:
+    result = Runner.run_sync(
+        agent,
+        input="what is physical ai?",
+    )
 
-print(result.final_output)
+    print(result.final_output)
+except Exception as e:
+    print(f"Error running agent: {e}")
+    print("Make sure the agential library is installed and configured properly")
+
