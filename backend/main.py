@@ -14,15 +14,10 @@ def create_app() -> FastAPI:
         description="RAG Chatbot API for Physical AI & Humanoid Robotics Book"
     )
 
-    # Add CORS middleware - only allow Vercel domain
+    # Add CORS middleware - allow all origins for development
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=[
-            "https://my-website-two-weld-92.vercel.app/",  # Production Vercel URL
-            "http://localhost:3000",  # Local development
-            "http://localhost:3001",  # Alternative local development
-            "http://localhost:8080"   # Alternative local development
-        ],
+        allow_origins=["https://my-website-two-weld-92.vercel.app/"],  # Allow all origins during development
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
