@@ -17,7 +17,7 @@ def create_app() -> FastAPI:
     # Add CORS middleware - allow all origins for development
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["https://my-website-two-weld-92.vercel.app/"],  # Allow all origins during development
+        allow_origins=["https://my-website-two-weld-92.vercel.app/","https://physical-ai-humanoid-robotics-textb-lime.vercel.app/"],  # Allow all origins during development
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
@@ -52,4 +52,5 @@ if __name__ == "__main__":
         port=8000,
         reload=True  # Only in development
     )
+
 
