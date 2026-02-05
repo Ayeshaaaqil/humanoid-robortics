@@ -1,0 +1,18 @@
+{
+  "id": "intro",
+  "title": "🤖 Physical AI & Humanoid Robotics",
+  "description": "Embodied Intelligence for Real-World Autonomous Systems",
+  "source": "@site/docs/intro.md",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/docs/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayeshaaaqil/Physical-AI-Humanoid-Robotics-Textbook/edit/main/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "/__docusaurus/debug-5ff": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/config-5ba": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/content-a2b": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    },
+    "__props": "__props---docusaurus-debug-content-3-c-0-be2"
+  },
+  "/__docusaurus/debug/globalData-c3c": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/metadata-156": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/registry-88c": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/routes-000": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/chat-4b9": {
+    "__comp": "__comp---site-src-pages-chat-tsx-256-018",
+    "__context": {
+      "plugin": "plugin---chata-74-e74"
+    },
+    "config": "config---chat-5-e-9-b86"
+  },
+  "/chatbot-522": {
+    "__comp": "__comp---site-src-pages-chatbot-jsb-34-5a2",
+    "__context": {
+      "plugin": "plugin---chata-74-e74"
+    },
+    "config": "config---chat-5-e-9-b86"
+  },
+  "/docs-efa": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---docsaba-d7c"
+    }
+  },
+  "/docs-8fd": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---docs-005-788"
+  },
+  "/docs-0db": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/docs/chapter-1-introduction-to-physical-ai-2d1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-chapter-1-introduction-to-physical-aib-4-e-9dd"
+  },
+  "/docs/chapter-2-basics-of-humanoid-robotics-375": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-chapter-2-basics-of-humanoid-robotics-4-a-5-179"
+  },
+  "/docs/chapter-3-ros-2-fundamentals-0cb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-chapter-3-ros-2-fundamentals-7-de-4fe"
+  },
+  "/docs/chapter-4-digital-twin-simulation-07a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-chapter-4-digital-twin-simulationeee-6a4"
+  },
+  "/docs/chapter-5-vision-language-action-systems-9f2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-chapter-5-vision-language-action-systems-755-651"
+  },
+  "/docs/chapter-6-capstone-ai-robot-pipeline-d57": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-chapter-6-capstone-ai-robot-pipeline-8-d-3-5f2"
+  },
+  "/docs/intro-853": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-intro-0-e-3-be1"
+  },
+  "/-2e1": {
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__context": {
+      "plugin": "plugin---chata-74-e74"
+    },
+    "config": "config---chat-5-e-9-b86"
+  }
+}

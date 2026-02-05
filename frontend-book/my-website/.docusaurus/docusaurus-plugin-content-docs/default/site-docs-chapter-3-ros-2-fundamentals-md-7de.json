@@ -1,0 +1,30 @@
+{
+  "id": "chapter-3-ros-2-fundamentals",
+  "title": "Chapter 3 - ROS 2 Fundamentals",
+  "description": "Learning Objectives",
+  "source": "@site/docs/chapter-3-ros-2-fundamentals.md",
+  "sourceDirName": ".",
+  "slug": "/chapter-3-ros-2-fundamentals",
+  "permalink": "/docs/chapter-3-ros-2-fundamentals",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayeshaaaqil/Physical-AI-Humanoid-Robotics-Textbook/edit/main/docs/chapter-3-ros-2-fundamentals.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "id": "chapter-3-ros-2-fundamentals",
+    "title": "Chapter 3 - ROS 2 Fundamentals",
+    "sidebar_label": "3. ROS 2 Fundamentals",
+    "sidebar_position": 3
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "2. Basics of Humanoid Robotics",
+    "permalink": "/docs/chapter-2-basics-of-humanoid-robotics"
+  },
+  "next": {
+    "title": "4. Digital Twin Simulation",
+    "permalink": "/docs/chapter-4-digital-twin-simulation"
+  }
+}

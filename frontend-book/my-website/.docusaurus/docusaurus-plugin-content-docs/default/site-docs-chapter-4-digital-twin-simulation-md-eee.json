@@ -1,0 +1,30 @@
+{
+  "id": "chapter-4-digital-twin-simulation",
+  "title": "Chapter 4 - Digital Twin Simulation",
+  "description": "Learning Objectives",
+  "source": "@site/docs/chapter-4-digital-twin-simulation.md",
+  "sourceDirName": ".",
+  "slug": "/chapter-4-digital-twin-simulation",
+  "permalink": "/docs/chapter-4-digital-twin-simulation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayeshaaaqil/Physical-AI-Humanoid-Robotics-Textbook/edit/main/docs/chapter-4-digital-twin-simulation.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "id": "chapter-4-digital-twin-simulation",
+    "title": "Chapter 4 - Digital Twin Simulation",
+    "sidebar_label": "4. Digital Twin Simulation",
+    "sidebar_position": 4
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "3. ROS 2 Fundamentals",
+    "permalink": "/docs/chapter-3-ros-2-fundamentals"
+  },
+  "next": {
+    "title": "5. Vision-Language-Action (VLA)",
+    "permalink": "/docs/chapter-5-vision-language-action-systems"
+  }
+}

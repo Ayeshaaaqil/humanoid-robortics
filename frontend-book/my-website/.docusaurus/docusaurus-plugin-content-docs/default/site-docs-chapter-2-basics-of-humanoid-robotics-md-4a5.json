@@ -1,0 +1,30 @@
+{
+  "id": "chapter-2-basics-of-humanoid-robotics",
+  "title": "Chapter 2 - Basics of Humanoid Robotics",
+  "description": "Learning Objectives",
+  "source": "@site/docs/chapter-2-basics-of-humanoid-robotics.md",
+  "sourceDirName": ".",
+  "slug": "/chapter-2-basics-of-humanoid-robotics",
+  "permalink": "/docs/chapter-2-basics-of-humanoid-robotics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayeshaaaqil/Physical-AI-Humanoid-Robotics-Textbook/edit/main/docs/chapter-2-basics-of-humanoid-robotics.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "id": "chapter-2-basics-of-humanoid-robotics",
+    "title": "Chapter 2 - Basics of Humanoid Robotics",
+    "sidebar_label": "2. Basics of Humanoid Robotics",
+    "sidebar_position": 2
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "1. Introduction to Physical AI",
+    "permalink": "/docs/chapter-1-introduction-to-physical-ai"
+  },
+  "next": {
+    "title": "3. ROS 2 Fundamentals",
+    "permalink": "/docs/chapter-3-ros-2-fundamentals"
+  }
+}

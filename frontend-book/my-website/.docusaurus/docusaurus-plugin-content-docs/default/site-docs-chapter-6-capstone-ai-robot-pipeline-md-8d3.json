@@ -1,0 +1,26 @@
+{
+  "id": "chapter-6-capstone-ai-robot-pipeline",
+  "title": "Chapter 6 - Capstone: Simple AI-Robot Pipeline",
+  "description": "Learning Objectives",
+  "source": "@site/docs/chapter-6-capstone-ai-robot-pipeline.md",
+  "sourceDirName": ".",
+  "slug": "/chapter-6-capstone-ai-robot-pipeline",
+  "permalink": "/docs/chapter-6-capstone-ai-robot-pipeline",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ayeshaaaqil/Physical-AI-Humanoid-Robotics-Textbook/edit/main/docs/chapter-6-capstone-ai-robot-pipeline.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "id": "chapter-6-capstone-ai-robot-pipeline",
+    "title": "Chapter 6 - Capstone: Simple AI-Robot Pipeline",
+    "sidebar_label": "6. Capstone Project",
+    "sidebar_position": 6
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "5. Vision-Language-Action (VLA)",
+    "permalink": "/docs/chapter-5-vision-language-action-systems"
+  }
+}
